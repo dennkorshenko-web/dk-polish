@@ -96,9 +96,11 @@
       });
       examplesCache.set(word.pos, request);
     }
-    const examples = (await examplesCache.get(word.pos))[word.id];
+    const examples = (await examplesCache.get(word.pos))?.[word.id];
     if (!Array.isArray(examples) || !examples.length || examples.some(example =>
-      typeof example.pl !== 'string' || !example.pl.trim() || typeof example.ru !== 'string' || !example.ru.trim())) {
+      !example || typeof example.pl !== 'string' || !example.pl.trim() || typeof example.ru !== 'string' || !example.ru.trim())) {
+      // A successful response may still be incomplete; a retry must fetch it again.
+      examplesCache.delete(word.pos);
       throw new Error('Examples for this word are unavailable');
     }
     return examples;
@@ -322,6 +324,7 @@
   const pageChange = delta => {
     state.page += delta;
     renderPage();
+    body.querySelector('.examples-toggle')?.focus({ preventScroll: true });
     $('word-table').scrollIntoView({ block: 'start', behavior: 'instant' });
   };
   $('previous-page').addEventListener('click', () => pageChange(-1));
