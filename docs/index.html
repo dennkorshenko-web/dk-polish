@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="2101 польское слово с переводом на русский из колоды DK-Polish. Поиск, части речи, самопроверка и таблица Excel для скачивания.">
+  <meta property="og:title" content="DK-Polish · Слова и переводы">
+  <meta property="og:description" content="Польский словарь с поиском и переводами на русский. Все 2101 слово из колоды Polish Top 2000.">
+  <meta property="og:type" content="website">
+  <title>Слова и переводы · DK-Polish</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/vocabulary.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#dictionary">Перейти к словарю</a>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="DK-Polish, главная">
+        <span class="brand-mark" aria-hidden="true">dk<span>.</span></span>
+        <span>DK-Polish</span>
+      </a>
+      <nav class="header-nav" aria-label="Навигация">
+        <a href="#decks">Колоды Anki</a>
+        <a class="github-link" href="https://github.com/dennkorshenko-web/dk-polish">GitHub <span aria-hidden="true">↗</span></a>
+        <button class="theme-button" id="theme-toggle" type="button" aria-label="Включить тёмную тему" title="Сменить тему">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">Польский язык с Anki</p>
+        <h1 id="page-title">Слова и переводы<span>.</span></h1>
+        <p class="intro-text">Вся лексика из <a href="https://ankiweb.net/shared/info/1828156755">Polish Top 2000 (RU)</a> в одном месте.<br class="desktop-break"> Находи слова, просматривай части речи и проверяй себя.</p>
+        <p class="dataset-meta"><span>2 101 слово</span><span>9 частей речи</span><span>Польский → русский</span></p>
+      </div>
+      <a class="button download-button" href="downloads/DK-Polish_Words_RU.xlsx" download>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/></svg>
+        Скачать Excel
+      </a>
+    </section>
+
+    <section id="dictionary" class="dictionary" aria-label="Словарь">
+      <div class="tools">
+        <div class="search-wrap">
+          <label class="sr-only" for="search">Найти слово или перевод</label>
+          <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+          <input id="search" type="search" placeholder="Найти слово или перевод…" autocomplete="off" spellcheck="false" aria-controls="word-list">
+          <button id="clear-search" class="clear-search" type="button" aria-label="Очистить поиск" hidden>×</button>
+        </div>
+        <button class="button reveal-toggle" id="translations-toggle" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Скрыть переводы</span>
+        </button>
+      </div>
+
+      <div class="dictionary-layout">
+        <aside class="categories" aria-label="Части речи">
+          <h2 class="section-label">Части речи</h2>
+          <div id="category-buttons" class="category-buttons"></div>
+          <p class="search-hint">Можно искать без польских букв: <span lang="pl">czlowiek → człowiek</span></p>
+        </aside>
+
+        <div class="results">
+          <div class="results-toolbar">
+            <p id="result-count" role="status" aria-live="polite" aria-atomic="true">Загрузка словаря…</p>
+            <div class="sort-wrap">
+              <label class="sr-only" for="sort">Порядок слов</label>
+              <select id="sort">
+                <option value="deck">Как в колоде</option>
+                <option value="alpha">По алфавиту</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="word-table" id="word-table">
+              <caption class="sr-only">Польские слова и русские переводы</caption>
+              <thead><tr><th scope="col" class="number-col">№</th><th scope="col">Polski</th><th scope="col">Русский</th></tr></thead>
+              <tbody id="word-list"></tbody>
+            </table>
+            <div id="empty-state" class="empty-state" hidden>
+              <h3>Ничего не найдено</h3>
+              <p>Попробуй другое слово или выбери другую часть речи.</p>
+              <button class="button" id="reset-filters" type="button">Сбросить поиск и фильтры</button>
+            </div>
+          </div>
+          <div class="pagination" id="pagination">
+            <span id="page-range"></span>
+            <div class="pagination-buttons">
+              <button class="button" id="previous-page" type="button" disabled><span aria-hidden="true">←</span> Назад</button>
+              <button class="button" id="next-page" type="button" disabled>Далее <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <noscript><p class="noscript">Для поиска нужен JavaScript. Можно открыть <a href="https://github.com/dennkorshenko-web/dk-polish/blob/main/docs/VOCABULARY.md">обычную таблицу слов</a> или <a href="downloads/DK-Polish_Words_RU.xlsx">скачать Excel</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="decks" id="decks" aria-labelledby="decks-title">
+      <div class="decks-heading"><p class="eyebrow">Продолжить в Anki</p><h2 id="decks-title">От слов к предложениям</h2><p>Две бесплатные колоды с переводом на русский и озвучкой.</p></div>
+      <div class="deck-grid">
+        <article class="deck-card">
+          <span class="deck-index">01 / Слова</span>
+          <h3>Polish Top 2000 (RU)</h3>
+          <p>2 101 слово, изображения, грамматика и примеры употребления. Ориентир A1–B1.</p>
+          <a href="https://ankiweb.net/shared/info/1828156755">Скачать на AnkiWeb <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="deck-card">
+          <span class="deck-index">02 / Предложения</span>
+          <h3>4200+ Polish Sentences (RU)</h3>
+          <p>4 202 предложения с озвучкой. По два примера к каждому слову основной колоды.</p>
+          <a href="https://ankiweb.net/shared/info/189146153">Скачать на AnkiWeb <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><a class="footer-brand" href="https://github.com/dennkorshenko-web/dk-polish">DK-Polish</a><span>Слова из основной колоды v.2.1.4</span></div>
+    <nav aria-label="Полезные ссылки"><a href="https://github.com/dennkorshenko-web/dk-polish/blob/main/docs/START_HERE.md">Как начать</a><a href="https://github.com/dennkorshenko-web/dk-polish/issues/new/choose">Сообщить об ошибке</a></nav>
+  </footer>
+</body>
+</html>

@@ -13,7 +13,7 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 Можно заниматься с одной колодой или использовать обе вместе. Карточки подходят для компьютера и телефона.
 
-[Слова и переводы](docs/VOCABULARY.md) · [Быстрый старт](docs/START_HERE.md) · [Версии и изменения](CHANGELOG.md) · [Сообщить об ошибке](https://github.com/dennkorshenko-web/dk-polish/issues/new/choose)
+[Слова и переводы](docs/VOCABULARY.md) · [Скачать Excel](docs/downloads/DK-Polish_Words_RU.xlsx) · [Быстрый старт](docs/START_HERE.md) · [Версии и изменения](CHANGELOG.md) · [Сообщить об ошибке](https://github.com/dennkorshenko-web/dk-polish/issues/new/choose)
 
 ---
 
@@ -30,6 +30,8 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 **[📥 Скачать основную колоду на AnkiWeb](https://ankiweb.net/shared/info/1828156755)**
 
 📋 **[Открыть таблицу всех слов с переводами](docs/VOCABULARY.md)** – 2 101 слово по частям речи с быстрыми переходами между разделами.
+
+📥 **[Скачать таблицу Excel](docs/downloads/DK-Polish_Words_RU.xlsx)** – общий список и 9 вкладок по частям речи, фильтры и столбец для своих заметок.
 
 <p align="center"><img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/OSTATNI_1.PNG" width="300" alt="Пример карточки основной колоды DK-Polish"> <img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/OSTATNI_2.PNG" width="300" alt="Ещё один пример карточки основной колоды DK-Polish"></p>
 
