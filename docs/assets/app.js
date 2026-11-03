@@ -1,4 +1,4 @@
-/* DK-Polish vocabulary. No external libraries or network requests. */
+/* DK-Polish vocabulary. No external libraries. Examples load from local site assets on demand. */
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
@@ -43,6 +43,9 @@
     page: 1,
   };
   const revealed = new Set();
+  const openedExamples = new Set();
+  const revealedExamples = new Set();
+  const examplesCache = new Map();
   const search = $('search');
   const body = $('word-list');
   const toggle = $('translations-toggle');
@@ -82,8 +85,100 @@
   $('category-buttons').append(categoryButton('all', 'Все слова', words.length));
   dataset.groups.forEach(group => $('category-buttons').append(categoryButton(group.code, group.label, group.count)));
 
+  async function loadExamples(word) {
+    if (!examplesCache.has(word.pos)) {
+      const request = fetch(`assets/examples/${word.pos}.json`).then(response => {
+        if (!response.ok) throw new Error('Examples are unavailable');
+        return response.json();
+      }).catch(error => {
+        examplesCache.delete(word.pos);
+        throw error;
+      });
+      examplesCache.set(word.pos, request);
+    }
+    const examples = (await examplesCache.get(word.pos))[word.id];
+    if (!Array.isArray(examples) || !examples.length || examples.some(example =>
+      typeof example.pl !== 'string' || !example.pl.trim() || typeof example.ru !== 'string' || !example.ru.trim())) {
+      throw new Error('Examples for this word are unavailable');
+    }
+    return examples;
+  }
+
+  function makeExample(example, word, index) {
+    const item = document.createElement('li');
+    const polish = document.createElement('p');
+    polish.className = 'example-polish';
+    polish.lang = 'pl';
+    polish.textContent = example.pl;
+    const russian = document.createElement('p');
+    russian.className = 'example-translation';
+    russian.lang = 'ru';
+    russian.textContent = example.ru;
+    const key = `${word.id}-${index + 1}`;
+    russian.id = `example-translation-${key}`;
+    russian.hidden = state.hidden && !revealedExamples.has(key);
+    item.append(polish, russian);
+    if (state.hidden) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'example-reveal';
+      button.setAttribute('aria-controls', russian.id);
+      const sync = () => {
+        const visible = revealedExamples.has(key);
+        russian.hidden = !visible;
+        button.textContent = visible ? 'Скрыть перевод' : 'Показать перевод';
+        button.setAttribute('aria-expanded', String(visible));
+        button.setAttribute('aria-label', `${visible ? 'Скрыть' : 'Показать'} перевод примера ${index + 1}: ${word.word}`);
+      };
+      sync();
+      button.addEventListener('click', () => {
+        if (revealedExamples.has(key)) revealedExamples.delete(key); else revealedExamples.add(key);
+        sync();
+      });
+      item.append(button);
+    }
+    return item;
+  }
+
+  async function fillExamples(word, panel) {
+    panel.setAttribute('aria-busy', 'true');
+    const loading = document.createElement('p');
+    loading.className = 'examples-message';
+    loading.setAttribute('role', 'status');
+    loading.textContent = 'Загрузка примеров…';
+    panel.replaceChildren(loading);
+    try {
+      const examples = await loadExamples(word);
+      if (!panel.isConnected) return;
+      const list = document.createElement('ol');
+      list.className = 'examples-list';
+      list.append(...examples.map((example, index) => makeExample(example, word, index)));
+      panel.replaceChildren(list);
+      panel.dataset.loaded = 'true';
+    } catch {
+      if (!panel.isConnected) return;
+      const message = document.createElement('p');
+      message.className = 'examples-message';
+      message.setAttribute('role', 'status');
+      message.textContent = 'Не удалось загрузить примеры. Проверь соединение и попробуй ещё раз.';
+      const retry = document.createElement('button');
+      retry.type = 'button';
+      retry.className = 'button examples-retry';
+      retry.textContent = 'Повторить загрузку';
+      retry.addEventListener('click', () => {
+        // Keep the disclosure button focused when the retry control is replaced.
+        document.getElementById(`examples-toggle-${word.id}`)?.focus();
+        fillExamples(word, panel);
+      });
+      panel.replaceChildren(message, retry);
+    } finally {
+      panel.removeAttribute('aria-busy');
+    }
+  }
+
   function makeRow(word) {
     const row = document.createElement('tr');
+    row.className = 'word-row';
     row.dataset.wordId = word.id;
     const count = document.createElement('td');
     count.className = 'word-number';
@@ -100,6 +195,42 @@
       pos.textContent = groups.get(word.pos).singular;
       polishCell.append(pos);
     }
+    const examplesButton = document.createElement('button');
+    examplesButton.type = 'button';
+    examplesButton.className = 'examples-toggle';
+    examplesButton.id = `examples-toggle-${word.id}`;
+    examplesButton.setAttribute('aria-label', `Примеры употребления: ${word.word}`);
+    examplesButton.textContent = 'Примеры';
+    const chevron = document.createElement('span');
+    chevron.className = 'examples-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    examplesButton.append(chevron);
+    polishCell.append(examplesButton);
+
+    const examplesRow = document.createElement('tr');
+    examplesRow.className = 'examples-row';
+    examplesRow.id = `examples-row-${word.id}`;
+    examplesRow.hidden = !openedExamples.has(word.id);
+    const examplesCell = document.createElement('td');
+    examplesCell.colSpan = 3;
+    const panel = document.createElement('div');
+    panel.className = 'examples-panel';
+    panel.id = `examples-${word.id}`;
+    panel.setAttribute('role', 'group');
+    panel.setAttribute('aria-label', `Примеры употребления: ${word.word}`);
+    examplesCell.append(panel);
+    examplesRow.append(examplesCell);
+    examplesButton.setAttribute('aria-controls', examplesRow.id);
+    examplesButton.setAttribute('aria-expanded', String(!examplesRow.hidden));
+    row.classList.toggle('examples-open', !examplesRow.hidden);
+    examplesButton.addEventListener('click', () => {
+      if (openedExamples.has(word.id)) openedExamples.delete(word.id); else openedExamples.add(word.id);
+      examplesRow.hidden = !openedExamples.has(word.id);
+      examplesButton.setAttribute('aria-expanded', String(!examplesRow.hidden));
+      row.classList.toggle('examples-open', !examplesRow.hidden);
+      if (!examplesRow.hidden && panel.dataset.loaded !== 'true' && panel.getAttribute('aria-busy') !== 'true') fillExamples(word, panel);
+    });
+    if (!examplesRow.hidden) fillExamples(word, panel);
     const translationCell = document.createElement('td');
     const translation = document.createElement('span');
     translation.id = `translation-${word.id}`;
@@ -128,14 +259,14 @@
       translationCell.append(revealButton);
     }
     row.append(count, polishCell, translationCell);
-    return row;
+    return [row, examplesRow];
   }
 
   function renderPage() {
     const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
     state.page = Math.min(Math.max(1, state.page), pages);
     const start = (state.page - 1) * PAGE_SIZE;
-    body.replaceChildren(...filtered.slice(start, start + PAGE_SIZE).map(makeRow));
+    body.replaceChildren(...filtered.slice(start, start + PAGE_SIZE).flatMap(makeRow));
     $('word-table').hidden = !filtered.length;
     $('empty-state').hidden = !!filtered.length;
     $('pagination').hidden = !filtered.length;
@@ -176,6 +307,7 @@
   toggle.addEventListener('click', () => {
     state.hidden = !state.hidden;
     revealed.clear();
+    revealedExamples.clear();
     writePreference('dk-polish-hide', state.hidden ? '1' : '0');
     update();
   });

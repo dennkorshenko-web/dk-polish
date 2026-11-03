@@ -97,6 +97,21 @@ h1>span { color: var(--accent); }
 .polish-word { font-size: 17px; font-weight: 600; letter-spacing: -.15px; white-space: pre-line; }
 .word-pos { display: block; font-size: 10px; color: var(--muted); margin-top: 3px; font-weight: 400; letter-spacing: 0; }
 .translation-text { font-size: 14px; line-height: 1.6; white-space: pre-line; }
+.examples-toggle { display: flex; align-items: center; gap: 9px; margin: 5px 0 -4px; padding: 7px 0; min-height: 34px; border: none; border-radius: 4px; background: transparent; color: var(--accent); font-size: 11px; line-height: 1.4; }
+.examples-chevron { display: inline-block; width: 6px; height: 6px; border-right: 1.4px solid currentColor; border-bottom: 1.4px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.examples-toggle[aria-expanded="true"] .examples-chevron { transform: translateY(1px) rotate(225deg); }
+.word-table .word-row.examples-open { background: var(--surface-soft); }
+.word-table .examples-row td { padding: 3px 25px 24px 80px; border-top: none; background: var(--surface-soft); }
+.examples-panel { border-left: 2px solid var(--line); padding-left: 20px; }
+.examples-list { margin: 0; padding-left: 20px; }
+.examples-list li { padding-left: 5px; }
+.examples-list li+li { margin-top: 17px; padding-top: 17px; border-top: 1px solid var(--line); }
+.examples-list li::marker { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.example-polish { margin: 0; font-size: 16px; font-weight: 500; line-height: 1.6; white-space: pre-line; }
+.example-translation { margin: 5px 0 0; font-size: 14px; line-height: 1.65; color: var(--muted); white-space: pre-line; }
+.example-reveal { display: block; margin-top: 5px; padding: 7px 0; min-height: 34px; background: transparent; border: none; border-radius: 4px; color: var(--accent); font-size: 11px; text-align: left; }
+.examples-message { margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.examples-retry { margin-top: 12px; }
 .reveal-word { padding: 9px 13px; min-height: 40px; font-size: 12px; border: 1px dashed var(--line); background: var(--bg); color: var(--muted); border-radius: 8px; text-align: left; }
 .reveal-word[aria-expanded="true"] { margin-top: 8px; padding: 2px 0; background: transparent; border-color: transparent; min-height: 28px; display: block; font-size: 11px; }
 .empty-state { padding: 55px 20px; text-align: center; }
@@ -126,6 +141,7 @@ h1>span { color: var(--accent); }
   .button:not(:disabled):hover,.theme-button:hover { background: var(--surface-soft); }
   .download-button:hover,.category-button:hover { background: var(--accent-hover); }
   .reveal-word:hover { border-color: var(--accent); color: var(--accent); }
+  .examples-toggle:hover,.example-reveal:hover { text-decoration: underline; text-underline-offset: 3px; }
   .word-table tbody tr:hover { background: var(--bg); }
 }
 @media (max-width: 1184px) { .footer { margin-left: 32px; margin-right: 32px; } }
@@ -182,6 +198,15 @@ h1>span { color: var(--accent); }
   .polish-word { font-size: 16px; }
   .translation-text { font-size: 13px; line-height: 1.55; }
   .word-pos { font-size: 9px; line-height: 1.4; margin-top: 5px; }
+  .examples-toggle { min-height: 44px; margin-top: 2px; margin-bottom: -6px; font-size: 11px; }
+  .word-table .examples-row td { padding: 4px 14px 20px; }
+  .examples-panel { padding-left: 10px; }
+  .examples-list { padding-left: 20px; }
+  .examples-list li { padding-left: 3px; }
+  .examples-list li+li { margin-top: 13px; padding-top: 13px; }
+  .example-polish { font-size: 15px; line-height: 1.6; }
+  .example-translation { font-size: 13px; }
+  .example-reveal { min-height: 44px; margin-top: 2px; }
   .reveal-word { padding: 9px; font-size: 11px; min-height: 44px; white-space: normal; }
   .reveal-word[aria-expanded="true"] { min-height: 36px; }
   .pagination { gap: 9px; flex-wrap: wrap; }
