@@ -1,0 +1,41 @@
+name: Ошибка в карточке или работе колоды
+description: Сообщить об ошибке перевода, озвучки, изображения или отображения.
+title: "[Ошибка]: "
+body:
+  - type: dropdown
+    id: deck
+    attributes:
+      label: Колода
+      options:
+        - Polish Top 2000 (RU)
+        - 4200+ Polish Sentences (RU)
+        - Обе колоды
+    validations:
+      required: true
+  - type: input
+    id: deck-version
+    attributes:
+      label: Версия колоды
+      placeholder: Например, v.2.1.4 или v.1.0.0
+  - type: input
+    id: entry
+    attributes:
+      label: Слово, предложение или ID записи
+      description: Если ошибка относится к конкретной карточке, укажи её текст или ID.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Что произошло?
+      description: Опиши проблему и, если нужно, шаги для её повторения. Сюда можно приложить скриншот.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Как должно быть?
+      description: Если знаешь исправление перевода или написания, предложи его здесь.
+  - type: input
+    id: app
+    attributes:
+      label: Устройство и версия Anki
+      placeholder: Например, Anki Desktop на Windows или AnkiMobile на iPhone
