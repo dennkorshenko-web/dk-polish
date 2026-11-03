@@ -4,6 +4,11 @@
 Polish Anki decks with Russian translations, audio, images and example sentences.</p>
 
 <p align="center">
+  <a href="https://dennkorshenko-web.github.io/dk-polish/"><strong>🌐 Открыть сайт DK-Polish</strong></a><br>
+  Онлайн-словарь с поиском, переводами и примерами. Работает на компьютере и телефоне.
+</p>
+
+<p align="center">
   <a href="https://ankiweb.net/shared/info/1828156755"><strong>📚 Скачать слова</strong></a>
   &nbsp;·&nbsp;
   <a href="https://ankiweb.net/shared/info/189146153"><strong>💬 Скачать предложения</strong></a>
@@ -13,7 +18,20 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 Можно заниматься с одной колодой или использовать обе вместе. Карточки подходят для компьютера и телефона.
 
-[Слова и переводы](docs/VOCABULARY.md) · [Скачать Excel](docs/downloads/DK-Polish_Words_RU.xlsx) · [Быстрый старт](docs/START_HERE.md) · [Версии и изменения](CHANGELOG.md) · [Сообщить об ошибке](https://github.com/dennkorshenko-web/dk-polish/issues/new/choose)
+## 🧭 Что открыть
+
+Все материалы доступны по ссылкам ниже, без аккаунта GitHub.
+
+| Что хочешь сделать | Куда перейти |
+| --- | --- |
+| Найти слово, посмотреть перевод и раскрыть примеры | **[🌐 Онлайн-словарь](https://dennkorshenko-web.github.io/dk-polish/)** |
+| Скачать таблицу для занятий и своих заметок | **[📥 Скачать Excel](https://dennkorshenko-web.github.io/dk-polish/downloads/DK-Polish_Words_RU.xlsx)** |
+| Посмотреть весь список слов по частям речи на GitHub | **[📋 Материалы](Материалы/README.md)** |
+| Разобраться с сайтом, установить Anki или обновить колоду | **[🚀 Инструкции](Инструкции/README.md)** |
+
+Колоды для Anki скачиваются по кнопкам **«Скачать слова»** и **«Скачать предложения»** вверху страницы. Ниже можно посмотреть, чем они отличаются.
+
+[Версии колод](Инструкции/ВЕРСИИ.md) · [Сообщить об ошибке](https://github.com/dennkorshenko-web/dk-polish/issues/new/choose) · [Написать на почту](mailto:dk.anki.help@gmail.com)
 
 ---
 
@@ -29,9 +47,9 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 **[📥 Скачать основную колоду на AnkiWeb](https://ankiweb.net/shared/info/1828156755)**
 
-📋 **[Открыть таблицу всех слов с переводами](docs/VOCABULARY.md)** – 2 101 слово по частям речи с быстрыми переходами между разделами.
+📋 **[Открыть таблицу всех слов с переводами](Материалы/README.md)** – 2 101 слово по частям речи с быстрыми переходами между разделами.
 
-📥 **[Скачать таблицу Excel](docs/downloads/DK-Polish_Words_RU.xlsx)** – общий список и 9 вкладок по частям речи, фильтры и столбец для своих заметок.
+📥 **[Скачать таблицу Excel](https://dennkorshenko-web.github.io/dk-polish/downloads/DK-Polish_Words_RU.xlsx)** – общий список и 9 вкладок по частям речи, фильтры и столбец для своих заметок.
 
 <p align="center"><img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/OSTATNI_1.PNG" width="300" alt="Пример карточки основной колоды DK-Polish"> <img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/OSTATNI_2.PNG" width="300" alt="Ещё один пример карточки основной колоды DK-Polish"></p>
 
@@ -69,7 +87,7 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 **Как сочетать колоды:** изучай слова в основной, затем закрепляй знакомую лексику в предложениях. Сначала выполняй повторы, потом переходи к новым карточкам. Если занимаешься с обеими колодами, учитывай общую дневную нагрузку.
 
-Подробности установки, настройки предложений и обновления: **[инструкция](docs/START_HERE.md)**.
+Подробности установки, настройки предложений и обновления: **[инструкция](Инструкции/README.md)**.
 
 ## 🔄 Версии и обновления
 
@@ -78,7 +96,19 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 | Polish Top 2000 (RU) | **v.2.1.4** | 01.11.2026 |
 | 4200+ Polish Sentences (RU) | **v.1.0.0** | 02.11.2026 |
 
-Ссылки AnkiWeb ведут на опубликованные колоды. Описание версий находится в [истории изменений](CHANGELOG.md), порядок установки обновлений – в [инструкции](docs/START_HERE.md#как-обновить-колоду).
+Ссылки AnkiWeb ведут на опубликованные колоды. Описание версий находится в [истории изменений](Инструкции/ВЕРСИИ.md), порядок установки обновлений – в [инструкции](Инструкции/README.md#как-обновить-колоду).
+
+## 📁 Где что находится
+
+Если открываешь папки проекта, ориентируйся на их назначение:
+
+| Папка | Что внутри |
+| --- | --- |
+| [**Инструкции**](Инструкции/) | Как пользоваться сайтом и Anki, настройки, обновления и версии колод |
+| [**Материалы**](Материалы/) | Полный список слов с переводами и ссылка на таблицу Excel |
+| [**docs**](docs/) | Файлы сайта; сам словарь открывается по кнопке **«Открыть сайт DK-Polish»** вверху |
+
+В каждой из этих папок есть своя страница с пояснениями. Чтобы вернуться сюда, нажми **«Главная»**.
 
 ## ✉️ Обратная связь
 
