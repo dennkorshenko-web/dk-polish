@@ -10,12 +10,14 @@
   const writePreference = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Storage may be unavailable. */ } };
   const normalize = (value) => value.toLocaleLowerCase('pl').replaceAll('ł', 'l').replaceAll('ё', 'е').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const themeButton = $('theme-toggle');
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   let chosenTheme = readPreference('dk-polish-theme');
   const applyTheme = () => {
-    const dark = chosenTheme ? chosenTheme === 'dark' : systemDark.matches;
+    const dark = chosenTheme !== 'light';
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-    themeButton.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+    const label = dark ? 'Включить светлую тему' : 'Включить тёмную тему';
+    themeButton.setAttribute('aria-label', label);
+    themeButton.title = label;
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#101119' : '#f3f0eb';
   };
   applyTheme();
   themeButton.addEventListener('click', () => {
@@ -23,7 +25,6 @@
     writePreference('dk-polish-theme', chosenTheme);
     applyTheme();
   });
-  systemDark.addEventListener('change', applyTheme);
 
   if (!dataset || !Array.isArray(dataset.words) || !dataset.words.length) {
     $('result-count').textContent = 'Не удалось загрузить словарь. Можно обновить страницу или скачать Excel.';
