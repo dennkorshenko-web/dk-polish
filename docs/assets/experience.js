@@ -1,12 +1,12 @@
-/* Five real examples from the main deck. This preview does not record Anki progress. */
+/* Real illustrations, words and recordings from the main deck. No Anki progress is recorded. */
 (() => {
   'use strict';
   const examples = [
-    { id: 't2k-n-0018', word: 'przyjaciel', translation: 'друг', sentence: 'Przyjaciel pomógł mi naprawić rower.', sentenceTranslation: 'Друг помог мне починить велосипед.' },
-    { id: 't2k-n-0031', word: 'dom', translation: 'дом', sentence: 'Wracam do domu po pracy.', sentenceTranslation: 'Я возвращаюсь домой после работы.' },
-    { id: 't2k-v-0019', word: 'czytać', translation: 'читать', sentence: 'Czytam książkę.', sentenceTranslation: 'Я читаю книгу.' },
-    { id: 't2k-adv-0091', word: 'razem', translation: 'вместе; совместно', sentence: 'Chodźmy razem.', sentenceTranslation: 'Пойдём вместе.' },
-    { id: 't2k-n-0001', word: 'człowiek', translation: 'человек', sentence: 'Człowiek uczy się całe życie.', sentenceTranslation: 'Человек учится всю жизнь.' },
+    { id: 't2k-adj-0054', word: 'ostatni', translation: 'последний; крайний (по очереди/порядку).', sentence: 'To jest ostatni dzień urlopu.', sentenceTranslation: 'Это последний день отпуска.', imageAlt: 'Енот у коробки с последним кусочком пиццы' },
+    { id: 't2k-v-0379', word: 'tęsknić', translation: 'скучать (по кому-либо, чему-либо)', sentence: 'Tęsknię za tobą.', sentenceTranslation: 'Я скучаю по тебе.', imageAlt: 'Грустный тюлень смотрит на фотографию у окна' },
+    { id: 't2k-adj-0016', word: 'dziwny', translation: 'странный; необычный', sentence: 'To jest dziwny zbieg okoliczności.', sentenceTranslation: 'Это странное совпадение.', imageAlt: 'Лягушка под зонтом и дождём из разноцветных предметов' },
+    { id: 't2k-n-0863', word: 'cień', translation: 'тень', sentence: 'Usiądźmy w cieniu drzewa.', sentenceTranslation: 'Давай сядем в тени дерева.', imageAlt: 'Дерево отбрасывает длинную тень на песок' },
+    { id: 't2k-v-0148', word: 'uśmiechać się', translation: 'улыбаться', sentence: 'Uśmiecham się do ciebie.', sentenceTranslation: 'Я улыбаюсь тебе.', imageAlt: 'Улыбающаяся морская звезда' },
   ];
   const $ = id => document.getElementById(id);
   const flip = $('demo-flip');
@@ -77,9 +77,36 @@
     $('demo-front').setAttribute('aria-hidden', String(revealed));
     $('demo-back').setAttribute('aria-hidden', String(!revealed));
     const text = $(revealed ? 'demo-answer' : 'demo-question').textContent;
-    flip.setAttribute('aria-label', revealed ? `Ответ: ${text}. Вернуться к вопросу` : `Показать перевод: ${text}`);
+    const illustration = mode === 'word' && polishVisible() ? `. Иллюстрация: ${examples[index].imageAlt}` : '';
+    flip.setAttribute('aria-label', (revealed ? `Ответ: ${text}. Вернуться к вопросу` : `Показать перевод: ${text}`) + illustration);
     if (announce) $('demo-status').textContent = `${revealed ? 'Ответ' : 'Вопрос'}: ${text}`;
   }
+
+  function renderIllustration(side, visible, item) {
+    const picture = $(side === 'front' ? 'demo-question-image' : 'demo-answer-image');
+    picture.hidden = !visible;
+    picture.alt = visible ? item.imageAlt : '';
+    $(`demo-${side}`).classList.toggle('has-illustration', visible);
+    if (visible) {
+      const source = `assets/demo-images/${item.id}.jpg`;
+      if (picture.getAttribute('src') !== source || (picture.complete && !picture.naturalWidth)) {
+        // Keep the reserved space, without showing the previous word's picture while loading.
+        picture.classList.add('is-loading');
+        picture.src = source;
+      }
+    } else {
+      picture.removeAttribute('src');
+    }
+  }
+
+  ['demo-question-image', 'demo-answer-image'].forEach(id => {
+    $(id).addEventListener('load', () => $(id).classList.remove('is-loading'));
+    $(id).addEventListener('error', () => {
+      $(id).classList.remove('is-loading');
+      $(id).hidden = true;
+      $(id).parentElement.classList.remove('has-illustration');
+    });
+  });
 
   function render(announce = true) {
     const item = examples[index];
@@ -92,11 +119,14 @@
     $('demo-answer').textContent = reverse ? polish : russian;
     $('demo-question').lang = reverse ? 'ru' : 'pl';
     $('demo-answer').lang = reverse ? 'pl' : 'ru';
+    renderIllustration('front', mode === 'word' && !reverse, item);
+    renderIllustration('back', mode === 'word' && reverse, item);
     $('demo-question-language').textContent = reverse ? 'Русский' : 'Polski';
     $('demo-answer-language').textContent = reverse ? 'Polski' : 'Русский';
     $('demo-direction-label').textContent = reverse ? 'RU → PL' : 'PL → RU';
     $('demo-direction').setAttribute('aria-label', `Сменить направление: сейчас ${reverse ? 'с русского на польский' : 'с польского на русский'}`);
     $('demo-current').textContent = String(index + 1).padStart(2, '0');
+    $('demo-total').textContent = String(examples.length).padStart(2, '0');
     $('demo-dictionary-link').href = `?q=${encodeURIComponent(item.word)}#dictionary`;
     tabs.forEach(tab => {
       const selected = tab.dataset.mode === mode;
