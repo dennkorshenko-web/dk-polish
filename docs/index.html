@@ -13,10 +13,10 @@
   <title>DK-Polish · Польский. Слово за словом.</title>
   <link rel="icon" href="assets/favicon.svg?v=20261104-3" type="image/svg+xml">
   <script>try { if (localStorage.getItem('dk-polish-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch {}</script>
-  <link rel="stylesheet" href="assets/styles.css?v=20261104-3">
+  <link rel="stylesheet" href="assets/styles.css?v=20261104-4">
   <script defer src="assets/vocabulary.js"></script>
   <script defer src="assets/app.js?v=20261104-3"></script>
-  <script defer src="assets/experience.js?v=20261104-3"></script>
+  <script defer src="assets/experience.js?v=20261104-4"></script>
 </head>
 <body>
   <a class="skip-link" href="#dictionary">Перейти к словарю</a>
@@ -46,8 +46,14 @@
               <span class="demo-face demo-front" id="demo-front" aria-hidden="false"><span class="demo-language" id="demo-question-language">Polski</span><span class="demo-text" id="demo-question" lang="pl">przyjaciel</span><span class="demo-flip-hint">Перевод по нажатию <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6h7a5 5 0 0 1 0 10H9M5 6l4-4M5 6l4 4"/></svg></span></span>
               <span class="demo-face demo-back" id="demo-back" aria-hidden="true"><span class="demo-language" id="demo-answer-language">Русский</span><span class="demo-text" id="demo-answer" lang="ru">друг</span><span class="demo-flip-hint">Вернуться к вопросу <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6h7a5 5 0 0 1 0 10H9M5 6l4-4M5 6l4 4"/></svg></span></span>
             </button>
+            <button class="demo-audio" id="demo-audio-button" type="button" aria-label="Озвучка: przyjaciel" title="Прослушать по-польски" aria-pressed="false" hidden disabled>
+              <svg class="demo-audio-speaker" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 4-5 4H3v8h3l5 4V4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>
+              <svg class="demo-audio-stop" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+            </button>
+            <audio id="demo-audio" preload="none"></audio>
           </div>
           <div class="demo-bottom"><button class="icon-button" id="demo-previous" type="button" aria-label="Предыдущий пример" disabled>←</button><span class="demo-counter"><strong id="demo-current">01</strong><span>/ 05</span></span><button class="icon-button" id="demo-next" type="button" aria-label="Следующий пример" disabled>→</button></div>
+          <p class="demo-audio-error" id="demo-audio-error" role="status" hidden>Не удалось воспроизвести звук. Можно попробовать ещё раз.</p>
           <p class="sr-only" id="demo-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
         <p class="demo-note">Примеры из основной колоды. <a id="demo-dictionary-link" href="?q=przyjaciel#dictionary">Слово в словаре <span aria-hidden="true">↗</span></a></p>

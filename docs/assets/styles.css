@@ -71,7 +71,15 @@ h1>span { color: var(--accent); }
 .demo-tabs button { border: 0; background: transparent; color: var(--muted); padding: 8px 12px; min-height: 36px; border-radius: 8px; font-size: 11px; font-weight: 600; }
 .demo-tabs button[aria-selected="true"] { color: var(--text); background: var(--surface); box-shadow: 0 2px 5px #20362b12; }
 .demo-direction { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 5px 4px; background: transparent; border: 0; border-radius: 6px; color: var(--muted); font-size: 10px; font-weight: 600; white-space: nowrap; }
-#demo-panel { perspective: 1000px; }
+#demo-panel { position: relative; perspective: 1000px; }
+.demo-audio { position: absolute; z-index: 1; top: 10px; right: 10px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--accent); transition: background 160ms, border-color 160ms, box-shadow 160ms; -webkit-tap-highlight-color: transparent; }
+.demo-audio[hidden] { display: none; }
+.demo-audio:focus-visible { outline-offset: 3px; }
+.demo-audio:active { background: var(--accent-soft); }
+.demo-audio[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.demo-audio-stop, .demo-audio[aria-pressed="true"] .demo-audio-speaker { display: none; }
+.demo-audio[aria-pressed="true"] .demo-audio-stop { display: block; }
+.demo-audio-error { margin: 12px 2px 0; color: var(--muted); font-size: 12px; line-height: 1.5; text-align: center; }
 .demo-flip { position: relative; display: block; width: 100%; height: 248px; padding: 0; border: 0; border-radius: 15px; background: transparent; text-align: center; transform-style: preserve-3d; }
 .demo-flip:disabled { opacity: 1; }
 .demo-face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 1px solid var(--line-soft); border-radius: 15px; padding: 46px 22px; background: var(--bg); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform 420ms cubic-bezier(.22,.7,.25,1); }
@@ -217,6 +225,7 @@ h1>span { color: var(--accent); }
   [data-theme="dark"] .button-primary:hover { color: var(--bg); }
   .button-quiet:hover { background: var(--surface-soft); border-color: transparent; }
   .demo-direction:hover { color: var(--accent); }
+  .demo-audio:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   .demo-tabs button:not([aria-selected="true"]):hover { color: var(--text); }
   .demo-flip:not(:disabled):hover .demo-face { border-color: var(--focus); }
   .deck-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px #29493710; border-color: var(--focus); }
