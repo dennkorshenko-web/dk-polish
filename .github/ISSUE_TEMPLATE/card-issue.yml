@@ -21,19 +21,19 @@ body:
     id: entry
     attributes:
       label: Слово, предложение или ID записи
-      description: Если ошибка относится к конкретной карточке, укажи её текст или ID.
+      description: Текст или ID карточки, к которой относится ошибка.
   - type: textarea
     id: problem
     attributes:
       label: Что произошло?
-      description: Опиши проблему и, если нужно, шаги для её повторения. Сюда можно приложить скриншот.
+      description: Описание проблемы и шаги для её повторения. Можно приложить скриншот.
     validations:
       required: true
   - type: textarea
     id: suggestion
     attributes:
       label: Как должно быть?
-      description: Если знаешь исправление перевода или написания, предложи его здесь.
+      description: Предлагаемое исправление перевода или написания, если оно известно.
   - type: input
     id: app
     attributes:

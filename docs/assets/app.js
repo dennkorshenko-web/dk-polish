@@ -26,7 +26,7 @@
   systemDark.addEventListener('change', applyTheme);
 
   if (!dataset || !Array.isArray(dataset.words) || !dataset.words.length) {
-    $('result-count').textContent = 'Не удалось загрузить словарь. Обнови страницу или скачай Excel.';
+    $('result-count').textContent = 'Не удалось загрузить словарь. Можно обновить страницу или скачать Excel.';
     $('pagination').hidden = true;
     $('word-table').hidden = true;
     return;
@@ -162,7 +162,7 @@
       const message = document.createElement('p');
       message.className = 'examples-message';
       message.setAttribute('role', 'status');
-      message.textContent = 'Не удалось загрузить примеры. Проверь соединение и попробуй ещё раз.';
+      message.textContent = 'Не удалось загрузить примеры. Можно проверить соединение и повторить загрузку.';
       const retry = document.createElement('button');
       retry.type = 'button';
       retry.className = 'button examples-retry';
