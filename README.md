@@ -1,7 +1,7 @@
 <h1 align="center">DK-Polish</h1>
 
-<p align="center"><strong>Польский язык в Anki: слова, предложения и озвучка</strong><br>
-Polish Anki decks with Russian translations, audio, images and example sentences.</p>
+<p align="center"><strong>2000+ польских слов с переводом на русский и озвучкой</strong><br>
+Polish Top 2000: free Anki decks with Russian translations, audio, images and example sentences.</p>
 
 <p align="center">
   <a href="https://dkpolish.github.io/dk-polish/"><strong>🌐 Открыть сайт DK-Polish</strong></a><br>
@@ -14,7 +14,7 @@ Polish Anki decks with Russian translations, audio, images and example sentences
   <a href="https://ankiweb.net/shared/info/189146153"><strong>💬 Скачать предложения</strong></a>
 </p>
 
-Привет! 👋 Здесь собраны две бесплатные колоды для изучения польского с переводом на русский. Основная помогает освоить слова, а колода предложений – закрепить их в контексте и потренировать понимание на слух.
+Привет! 👋 **DK-Polish** – бесплатные карточки Anki и онлайн-словарь для изучения польского языка с переводом на русский. **Polish Top 2000 (RU)** содержит **2 101 польское слово** с озвучкой, изображениями и примерами для уровней A1–B1. **Polish Sentences** дополняет её **4 202 предложениями с аудио**, чтобы закреплять слова в контексте и тренировать понимание на слух.
 
 Можно заниматься с одной колодой или использовать обе вместе. Карточки подходят для компьютера и телефона.
 
@@ -93,10 +93,12 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 | Колода | Версия | Дата версии |
 | --- | --- | --- |
-| Polish Top 2000 (RU) | **v.2.1.4** | 01.11.2026 |
+| Polish Top 2000 (RU) | **v.2.1.5** | 04.11.2026 |
 | 4200+ Polish Sentences (RU) | **v.1.0.0** | 02.11.2026 |
 
 Ссылки AnkiWeb ведут на опубликованные колоды. Описание версий находится в [истории изменений](Инструкции/ВЕРСИИ.md), порядок установки обновлений – в [инструкции](Инструкции/README.md#как-обновить-колоду).
+
+Онлайн-словарь и таблица Excel подготовлены на основе данных основной колоды v.2.1.4.
 
 ## 📁 Где что находится
 
