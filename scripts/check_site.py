@@ -31,6 +31,8 @@ class Page(HTMLParser):
                     self.remote_images.add(attrs[key])
         if tag == 'link' and attrs.get('rel') == 'canonical':
             self.canonical.append(attrs.get('href'))
+        if tag == 'meta' and (attrs.get('property') == 'og:image' or attrs.get('name') == 'twitter:image'):
+            self.references.append(attrs['content'])
         if tag == 'meta' and attrs.get('name') == 'robots':
             assert 'noindex' not in attrs.get('content', '').lower(), 'Site must remain indexable'
 
@@ -40,6 +42,8 @@ assert len(page.ids) == len(set(page.ids)), 'Duplicate HTML IDs'
 assert page.canonical == [SITE], 'Canonical URL changed or missing'
 
 def local_reference(base, value):
+    if value.startswith(SITE):
+        base, value = DOCS, value[len(SITE):]
     url = urlparse(value)
     if url.scheme or url.netloc:
         return

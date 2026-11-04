@@ -93,10 +93,12 @@ Polish Top 2000: free Anki decks with Russian translations, audio, images and ex
 
 | Колода | Версия | Дата версии |
 | --- | --- | --- |
-| Polish Top 2000 (RU) | **v.2.1.5** | 04.11.2026 |
-| 4200+ Polish Sentences (RU) | **v.1.0.0** | 02.11.2026 |
+| Polish Top 2000 (RU) | **[v.2.1.5](https://github.com/dkpolish/dk-polish/releases/tag/words-v2.1.5)** | 04.11.2026 |
+| 4200+ Polish Sentences (RU) | **[v.1.0.0](https://github.com/dkpolish/dk-polish/releases/tag/sentences-v1.0.0)** | 02.11.2026 |
 
 Ссылки AnkiWeb ведут на опубликованные колоды. Описание версий находится в [истории изменений](Инструкции/ВЕРСИИ.md), порядок установки обновлений – в [инструкции](Инструкции/README.md#как-обновить-колоду).
+
+Отдельные страницы выпусков доступны в **[GitHub Releases](https://github.com/dkpolish/dk-polish/releases)**. Подписка на новые выпуски: **Watch → Custom → Releases** в меню репозитория.
 
 Онлайн-словарь и таблица Excel подготовлены на основе данных основной колоды v.2.1.4.
 
