@@ -4,7 +4,7 @@
 Polish Anki decks with Russian translations, audio, images and example sentences.</p>
 
 <p align="center">
-  <a href="https://dennkorshenko-web.github.io/dk-polish/"><strong>🌐 Открыть сайт DK-Polish</strong></a><br>
+  <a href="https://dkpolish.github.io/dk-polish/"><strong>🌐 Открыть сайт DK-Polish</strong></a><br>
   Онлайн-словарь с поиском, переводами и примерами. Работает на компьютере и телефоне.
 </p>
 
@@ -24,14 +24,14 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 | Задача | Раздел |
 | --- | --- |
-| Поиск слов, переводов и примеров | **[🌐 Онлайн-словарь](https://dennkorshenko-web.github.io/dk-polish/)** |
-| Таблица для занятий и заметок | **[📥 Скачать Excel](https://dennkorshenko-web.github.io/dk-polish/downloads/DK-Polish_Words_RU.xlsx)** |
+| Поиск слов, переводов и примеров | **[🌐 Онлайн-словарь](https://dkpolish.github.io/dk-polish/)** |
+| Таблица для занятий и заметок | **[📥 Скачать Excel](https://dkpolish.github.io/dk-polish/downloads/DK-Polish_Words_RU.xlsx)** |
 | Полный список слов по частям речи на GitHub | **[📋 Материалы](Материалы/README.md)** |
 | Работа с сайтом, установка Anki и обновление колод | **[🚀 Инструкции](Инструкции/README.md)** |
 
 Колоды для Anki скачиваются по кнопкам **«Скачать слова»** и **«Скачать предложения»** вверху страницы. Ниже можно посмотреть, чем они отличаются.
 
-[Версии колод](Инструкции/ВЕРСИИ.md) · [Сообщить об ошибке](https://github.com/dennkorshenko-web/dk-polish/issues/new/choose) · [Написать на почту](mailto:dk.anki.help@gmail.com)
+[Версии колод](Инструкции/ВЕРСИИ.md) · [Сообщить об ошибке](https://github.com/dkpolish/dk-polish/issues/new/choose) · [Написать на почту](mailto:dk.anki.help@gmail.com)
 
 ---
 
@@ -49,9 +49,9 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 📋 **[Открыть таблицу всех слов с переводами](Материалы/README.md)** – 2 101 слово по частям речи с быстрыми переходами между разделами.
 
-📥 **[Скачать таблицу Excel](https://dennkorshenko-web.github.io/dk-polish/downloads/DK-Polish_Words_RU.xlsx)** – общий список и 9 вкладок по частям речи, фильтры и столбец для заметок.
+📥 **[Скачать таблицу Excel](https://dkpolish.github.io/dk-polish/downloads/DK-Polish_Words_RU.xlsx)** – общий список и 9 вкладок по частям речи, фильтры и столбец для заметок.
 
-<p align="center"><img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/OSTATNI_1.PNG" width="300" alt="Пример карточки основной колоды DK-Polish"> <img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/OSTATNI_2.PNG" width="300" alt="Ещё один пример карточки основной колоды DK-Polish"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/dkpolish/anki-images/refs/heads/main/OSTATNI_1.PNG" width="300" alt="Пример карточки основной колоды DK-Polish"> <img src="https://raw.githubusercontent.com/dkpolish/anki-images/refs/heads/main/OSTATNI_2.PNG" width="300" alt="Ещё один пример карточки основной колоды DK-Polish"></p>
 
 ## 💬 4200+ Polish Sentences (RU) • Audio
 
@@ -67,12 +67,12 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 **[📥 Скачать предложения на AnkiWeb](https://ankiweb.net/shared/info/189146153)**
 
-<p align="center"><img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/EX1_Light_Front.PNG" width="300" alt="Лицевая сторона карточки с предложением в светлой теме"> <img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/EX1_Light_Back.PNG" width="300" alt="Ответ карточки с предложением в светлой теме"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/dkpolish/anki-images/refs/heads/main/EX1_Light_Front.PNG" width="300" alt="Лицевая сторона карточки с предложением в светлой теме"> <img src="https://raw.githubusercontent.com/dkpolish/anki-images/refs/heads/main/EX1_Light_Back.PNG" width="300" alt="Ответ карточки с предложением в светлой теме"></p>
 
 <details>
 <summary>🌙 Посмотреть тёмную тему</summary>
 
-<p align="center"><img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/EX2_Dark_Front.PNG" width="300" alt="Лицевая сторона карточки с предложением в тёмной теме"> <img src="https://raw.githubusercontent.com/dennkorshenko-web/anki-images/refs/heads/main/EX2_Dark_Back.PNG" width="300" alt="Ответ карточки с предложением в тёмной теме"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/dkpolish/anki-images/refs/heads/main/EX2_Dark_Front.PNG" width="300" alt="Лицевая сторона карточки с предложением в тёмной теме"> <img src="https://raw.githubusercontent.com/dkpolish/anki-images/refs/heads/main/EX2_Dark_Back.PNG" width="300" alt="Ответ карточки с предложением в тёмной теме"></p>
 
 </details>
 
@@ -112,7 +112,7 @@ Polish Anki decks with Russian translations, audio, images and example sentences
 
 ## ✉️ Обратная связь
 
-Ошибки и предложения: **[создать обращение](https://github.com/dennkorshenko-web/dk-polish/issues/new/choose)** или написать на **[dk.anki.help@gmail.com](mailto:dk.anki.help@gmail.com)**.
+Ошибки и предложения: **[создать обращение](https://github.com/dkpolish/dk-polish/issues/new/choose)** или написать на **[dk.anki.help@gmail.com](mailto:dk.anki.help@gmail.com)**.
 
 В обращении желательно указать колоду, слово или предложение и описание проблемы. ID записи или скриншот помогут быстрее найти нужную карточку.
 
