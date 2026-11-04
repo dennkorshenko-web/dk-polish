@@ -28,7 +28,9 @@
 - `.nojekyll` – служебный файл для публикации через GitHub Pages.
 - `START_HERE.md` и `VOCABULARY.md` – переходы со старых адресов документов.
 
-GitHub Pages публикует эту папку из ветки `main`.
+GitHub Pages публикует эту папку из ветки `main` после успешных автоматических проверок. Проверяются ссылки, картинки, аудио, словарь и основные действия в Chromium и WebKit, включая мобильный макет. Результат и отчёт доступны в [GitHub Actions](https://github.com/dkpolish/dk-polish/actions/workflows/site.yml).
+
+При ошибке проверки новая версия не публикуется, предыдущий сайт продолжает работать. Для запуска проверок файлов используется `python scripts/check_site.py`, для браузерных сценариев – `npm ci`, `npx playwright install chromium webkit` и `npm test` из корня репозитория.
 
 </details>
 
