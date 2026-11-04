@@ -24,6 +24,7 @@
   }
   tabs.forEach(tab => tab.addEventListener('click', () => selectPanel(tab.dataset.galleryTab)));
   gallery.querySelector('.gallery-tabs').addEventListener('keydown', event => {
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     const current = tabs.findIndex(tab => tab.dataset.galleryTab === selected);

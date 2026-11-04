@@ -145,6 +145,7 @@
   $('demo-direction').addEventListener('click', () => { reverse = !reverse; render(); });
   tabs.forEach(tab => tab.addEventListener('click', () => { mode = tab.dataset.mode; render(); }));
   document.querySelector('.demo-tabs').addEventListener('keydown', event => {
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
     const current = tabs.findIndex(tab => tab.dataset.mode === mode);
