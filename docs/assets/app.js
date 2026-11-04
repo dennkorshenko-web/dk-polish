@@ -12,12 +12,12 @@
   const themeButton = $('theme-toggle');
   let chosenTheme = readPreference('dk-polish-theme');
   const applyTheme = () => {
-    const dark = chosenTheme !== 'light';
+    const dark = chosenTheme === 'dark';
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     const label = dark ? 'Включить светлую тему' : 'Включить тёмную тему';
     themeButton.setAttribute('aria-label', label);
     themeButton.title = label;
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#101119' : '#f3f0eb';
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#121b20' : '#f7f8fa';
   };
   applyTheme();
   themeButton.addEventListener('click', () => {
